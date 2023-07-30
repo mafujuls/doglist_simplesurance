@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/BreedsFragment">
+
+    <fragment
+        android:id="@+id/BreedsFragment"
+        android:name="me.mafu.dogslist_simplesurance.presentation.ui.BreedsFragment"
+        android:label="@string/breeds_fragment_label"
+        tools:layout="@layout/fragment_breeds">
+
+        <action
+            android:id="@+id/action_BreedsFragment_to_FavoriteBreedsFragment"
+            app:destination="@id/FavoriteBreedsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/FavoriteBreedsFragment"
+        android:name="me.mafu.dogslist_simplesurance.presentation.ui.FavoriteBreedsFragment"
+        android:label="@string/favorite_breeds_fragment_label"
+        tools:layout="@layout/fragment_favorite_breeds">
+
+        <action
+            android:id="@+id/action_FavoriteBreedsFragment_to_BreedPhotoFragment"
+            app:destination="@id/BreedPhotoFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/BreedPhotoFragment"
+        android:name="me.mafu.dogslist_simplesurance.presentation.ui.BreedPhotoFragment"
+        android:label="@string/breeds_photo_fragment_label"
+        tools:layout="@layout/fragment_favorite_breeds">
+
+        <action
+            android:id="@+id/action_BreedPhotoFragment_to_BreedsFragment"
+            app:destination="@id/BreedsFragment" />
+    </fragment>
+</navigation>

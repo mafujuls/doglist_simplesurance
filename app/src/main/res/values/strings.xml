@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Dogs List - Simplesurance</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="breeds_fragment_label">Breeds Fragment</string>
+    <string name="favorite_breeds_fragment_label">Favorite Breeds Fragment</string>
+    <string name="breeds_photo_fragment_label">Breeds Photo Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
