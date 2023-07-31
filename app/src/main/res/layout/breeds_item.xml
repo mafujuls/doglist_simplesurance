@@ -47,9 +47,9 @@
                     android:layout_height="0dp"
                     android:background="@drawable/circular_textview"
                     android:gravity="center"
-                    android:text="199"
+                    android:text="19"
                     android:textColor="@color/reply_blue_800"
-                    android:textSize="24sp"
+                    android:textSize="25sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -58,16 +58,16 @@
                     android:id="@+id/breeds_view_item_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     android:layout_marginLeft="@dimen/spacing_m"
+                    android:background="@color/white"
                     android:text="@{breeds.name}"
-                    tools:text="TextView"
                     android:textColor="@color/reply_blue_800"
-                    android:textSize="19sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="20sp"
                     app:layout_constraintBottom_toTopOf="@+id/breeds_view_item_subtitle"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/breeds_view_item_number"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="TextView" />
 
                 <TextView
                     android:id="@+id/breeds_view_item_subtitle"
@@ -84,15 +84,15 @@
 
                 <ImageView
                     android:id="@+id/breeds_view_item_favorite_button"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:padding="8dp"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
                     android:layout_marginEnd="@dimen/spacing_l"
+                    android:onClick="@{() -> clickListener.onFavoriteClickListener(breeds)}"
+                    android:padding="8dp"
+                    android:src="@{breeds.favourite ? @drawable/ic_baseline_favorite_24 : @drawable/ic_baseline_favorite_border_24}"
                     app:layout_constraintBottom_toBottomOf="@+id/item_profile_menu_title_layout"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/item_profile_menu_title_layout"
-                    android:onClick="@{() -> clickListener.onFavoriteClickListener(breeds)}"
-                    android:src="@{breeds.favourite ? @drawable/ic_baseline_favorite_24 : @drawable/ic_baseline_favorite_border_24}" />
+                    app:layout_constraintTop_toTopOf="@+id/item_profile_menu_title_layout" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

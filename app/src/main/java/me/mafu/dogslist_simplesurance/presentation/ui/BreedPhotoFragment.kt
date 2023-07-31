@@ -9,12 +9,12 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import me.mafu.dogslist_simplesurance.data.utils.Resource
 import me.mafu.dogslist_simplesurance.databinding.FragmentBreedPhotoBinding
 import me.mafu.dogslist_simplesurance.presentation.adapters.PhotoAdapter
 import me.mafu.dogslist_simplesurance.presentation.viewmodels.BreedsPhotoViewModel
+import java.util.*
 
 @AndroidEntryPoint
 class BreedPhotoFragment : BaseBreedFragment<FragmentBreedPhotoBinding, BreedsPhotoViewModel>() {
@@ -35,7 +35,7 @@ class BreedPhotoFragment : BaseBreedFragment<FragmentBreedPhotoBinding, BreedsPh
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 viewModel.uiState.collect { uiState ->
-                    when(uiState) {
+                    when (uiState) {
                         is Resource.Loading -> binding.fragmentBreedsPhotoProgressBar.visibility =
                             View.VISIBLE
                         is Resource.Success -> {
@@ -55,15 +55,21 @@ class BreedPhotoFragment : BaseBreedFragment<FragmentBreedPhotoBinding, BreedsPh
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 viewModel.getSingleBreeds().collect {
                     binding.breedsViewItemTitle.text = it.name
-                    if (it.subBreeds.isEmpty()){
+                    if (it.subBreeds.isEmpty()) {
                         binding.breedsViewItemSubtitle.visibility = View.GONE
-                    } else{
-                        binding.breedsViewItemSubtitle.text = it.subBreeds
+                    } else {
+                        binding.breedsViewItemSubtitle.text =
+                            it.subBreeds.split(",").joinToString(", ") { singleName ->
+                                singleName.replaceFirstChar { firstChar ->
+                                    if (firstChar.isLowerCase()) firstChar.titlecase(
+                                        Locale.getDefault()
+                                    ) else it.toString()
+                                }
+                            }
                     }
                 }
             }
         }
-
     }
 
 }

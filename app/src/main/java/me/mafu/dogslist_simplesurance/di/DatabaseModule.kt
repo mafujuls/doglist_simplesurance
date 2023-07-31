@@ -1,9 +1,7 @@
 package me.mafu.dogslist_simplesurance.di
 
 import android.content.Context
-import androidx.room.Dao
 import androidx.room.Room
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +14,6 @@ import me.mafu.dogslist_simplesurance.data.local_data.db.BreedsDao
 import me.mafu.dogslist_simplesurance.data.local_data.db.BreedsDatabase
 import me.mafu.dogslist_simplesurance.data.remote_data.RemoteDataSource
 import me.mafu.dogslist_simplesurance.domain.repositories.BreedsRepository
-import me.mafu.dogslist_simplesurance.domain.usecases.GetBreedsUseCase
 import javax.inject.Singleton
 
 @Module
@@ -38,19 +35,16 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideLocalDataSource(dao: BreedsDao) : LocalDataSource {
+    fun provideLocalDataSource(dao: BreedsDao): LocalDataSource {
         return LocalDataSourceImpl(dao)
     }
 
     @Singleton
     @Provides
-    fun provideGetBreedsUseCase(repository: BreedsRepository) : GetBreedsUseCase {
-        return GetBreedsUseCase(repository)
-    }
-
-    /*@Singleton
-    @Provides
-    fun provideBreedsRepository(remoteDataSource: RemoteDataSource, localDataSource: LocalDataSource) : BreedsRepository {
+    fun provideBreedsRepository(
+        localDataSource: LocalDataSource,
+        remoteDataSource: RemoteDataSource
+    ): BreedsRepository {
         return BreedsRepositoryImpl(remoteDataSource, localDataSource)
-    }*/
+    }
 }

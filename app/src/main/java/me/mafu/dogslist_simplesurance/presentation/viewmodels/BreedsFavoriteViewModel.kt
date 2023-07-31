@@ -26,7 +26,7 @@ class BreedsFavoriteViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             getFavoriteBreedsUseCase.execute().collect {
-                _uiState.value = Resource.Success(it)
+                _uiState.value = Resource.Success(it.sortedBy { breed -> breed.name })
             }
         }
     }

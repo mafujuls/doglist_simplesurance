@@ -4,9 +4,8 @@ import kotlinx.coroutines.flow.Flow
 import me.mafu.dogslist_simplesurance.data.local_data.db.BreedsDao
 import me.mafu.dogslist_simplesurance.domain.models.Breeds
 import me.mafu.dogslist_simplesurance.domain.models.BreedsImage
-import javax.inject.Inject
 
-class LocalDataSourceImpl @Inject constructor(private val dao: BreedsDao) : LocalDataSource {
+class LocalDataSourceImpl (private val dao: BreedsDao) : LocalDataSource {
     override suspend fun saveBreeds(breeds: List<Breeds>) {
         dao.saveAllBreeds(breeds)
     }

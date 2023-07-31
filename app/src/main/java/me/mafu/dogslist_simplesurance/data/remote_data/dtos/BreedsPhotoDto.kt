@@ -1,6 +1,6 @@
 package me.mafu.dogslist_simplesurance.data.remote_data.dtos
 
-data class BreedsImageDto(
+data class BreedsPhotoDto(
     val status: String,
     val message: List<String>,
 ) {

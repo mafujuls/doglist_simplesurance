@@ -3,9 +3,9 @@
     <string name="action_settings">Settings</string>
     <string name="action_favorite">Favorite</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="breeds_fragment_label">Breeds Fragment</string>
-    <string name="favorite_breeds_fragment_label">Favorite Breeds Fragment</string>
-    <string name="breeds_photo_fragment_label">Breeds Photo Fragment</string>
+    <string name="breeds_fragment_label">Breeds List</string>
+    <string name="favorite_breeds_fragment_label">Favorite Breeds</string>
+    <string name="breeds_photo_fragment_label">Breeds Details</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -13,4 +13,5 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="breeds_list_no_data_message">You did\'t mark any breed as your favorite</string>
 </resources>

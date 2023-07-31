@@ -40,6 +40,6 @@ class BreedsPhotoViewModel @Inject constructor(
     }
 
     suspend fun getSingleBreeds() : Flow<Breeds>{
-        return getSingleBreedsUseCase.execute(breedsName!!) //ToDo: need to improve
+        return getSingleBreedsUseCase.execute(breedsName!!) //ToDo: Error prone! need to improve
     }
 }

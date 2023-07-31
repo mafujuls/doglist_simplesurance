@@ -3,10 +3,8 @@ package me.mafu.dogslist_simplesurance.presentation.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import me.mafu.dogslist_simplesurance.data.utils.Resource
 import me.mafu.dogslist_simplesurance.domain.models.Breeds
@@ -28,7 +26,7 @@ class BreedsViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             getBreedsUseCase.execute().collect {
-                _uiState.value = Resource.Success(it)
+                _uiState.value = Resource.Success(it.sortedBy { breed -> breed.name })
             }
         }
     }

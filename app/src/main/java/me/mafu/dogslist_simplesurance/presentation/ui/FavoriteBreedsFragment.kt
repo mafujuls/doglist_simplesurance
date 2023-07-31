@@ -2,9 +2,7 @@ package me.mafu.dogslist_simplesurance.presentation.ui
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -33,6 +31,11 @@ class FavoriteBreedsFragment :
         return BreedsFavoriteViewModel::class.java
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true);
+    }
+
     override fun inflateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,7 +43,6 @@ class FavoriteBreedsFragment :
     ): FragmentFavoriteBreedsBinding {
         return FragmentFavoriteBreedsBinding.inflate(inflater, container, false)
     }
-
 
     override fun setUpViews() {
         super.setUpViews()
@@ -60,6 +62,11 @@ class FavoriteBreedsFragment :
                             View.VISIBLE
                         is Resource.Success -> {
                             binding.fragmentBreedsFavoriteProgressBar.visibility = View.GONE
+                            if (uiState.data.isNullOrEmpty()){
+                                binding.fragmentBreedsFavoriteEmptyView.visibility = View.VISIBLE
+                            } else {
+                                binding.fragmentBreedsFavoriteEmptyView.visibility = View.GONE
+                            }
                             breedsAdapter.differ.submitList(uiState.data)
                         }
                         is Resource.Error -> Log.d("ssdd_d", "Error...")
@@ -83,5 +90,10 @@ class FavoriteBreedsFragment :
                 breeds.name
             )
         )
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        val item: MenuItem = menu.findItem(R.id.action_favorite)
+        item.isVisible = false
     }
 }

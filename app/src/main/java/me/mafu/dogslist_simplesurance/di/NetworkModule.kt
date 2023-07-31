@@ -49,5 +49,4 @@ class NetworkModule {
     fun provideRemoteDataSource(apiService: BreedsApiService) : RemoteDataSource {
         return RemoteDataSourceImpl(apiService)
     }
-
 }

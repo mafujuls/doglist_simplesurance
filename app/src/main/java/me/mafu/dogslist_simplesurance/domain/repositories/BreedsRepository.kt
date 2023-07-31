@@ -6,7 +6,7 @@ import me.mafu.dogslist_simplesurance.domain.models.BreedsImage
 
 interface BreedsRepository {
     suspend fun getBreedsList() : Flow<List<Breeds>>
-    suspend fun getSingleBreedsList(name: String) : Flow<Breeds>
+    suspend fun getSingleBreeds(name: String) : Flow<Breeds>
     suspend fun getBreedsImagesList(breedsName: String) : Flow<BreedsImage>
     suspend fun getFavoriteBreedsList() : Flow<List<Breeds>>
     suspend fun updateFavoriteBreedsList(breedsName: String, isFavourite: Boolean)

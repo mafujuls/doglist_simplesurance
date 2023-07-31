@@ -7,6 +7,6 @@ import javax.inject.Inject
 
 class GetSingleBreedsUseCase @Inject constructor(private val repository: BreedsRepository) {
     suspend fun execute(name: String): Flow<Breeds> {
-        return repository.getSingleBreedsList(name)
+        return repository.getSingleBreeds(name)
     }
 }
