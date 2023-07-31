@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Dogs List - Simplesurance</string>
     <string name="action_settings">Settings</string>
+    <string name="action_favorite">Favorite</string>
     <!-- Strings used for fragments for navigation -->
     <string name="breeds_fragment_label">Breeds Fragment</string>
     <string name="favorite_breeds_fragment_label">Favorite Breeds Fragment</string>

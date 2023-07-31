@@ -1,14 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.BreedPhotoFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:fillViewport="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:background="@color/background"
+        tools:context=".presentation.ui.BreedPhotoFragment">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/breeds_view_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            tools:text="TextView"
+            android:gravity="center"
+            android:padding="@dimen/spacing_m"
+            android:textColor="@color/reply_blue_800"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/breeds_view_item_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:paddingBottom="@dimen/spacing_m"
+            android:paddingLeft="@dimen/spacing_m"
+            android:paddingRight="@dimen/spacing_m"
+            android:textColor="@color/reply_blue_600"/>
+
+        <GridView
+            android:id="@+id/breeds_photo_grid_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="2"
+            android:verticalSpacing="@dimen/spacing_s"
+            android:horizontalSpacing="@dimen/spacing_s"
+            android:stretchMode="columnWidth"
+            android:gravity="center"
+            android:nestedScrollingEnabled="true"
+            android:padding="@dimen/spacing_s"
+            android:background="@color/background"/>
+
+        <ProgressBar
+            android:id="@+id/fragment_breeds_photo_progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

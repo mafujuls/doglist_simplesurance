@@ -10,6 +10,6 @@ interface BreedsApiService {
     @GET("breeds/list/all")
     suspend fun getDogBreeds(): Response<BreedsDto>
 
-    @GET("breed/{breed_name}/images/random/10")
+    @GET("breed/{breed_name}/images/random/6")
     suspend fun getBreedsImages(@Path("breed_name") breedName: String): Response<BreedsImageDto>
 }

@@ -16,11 +16,14 @@ interface BreedsDao {
     @Query("SELECT * FROM breeds")
     fun getAllBreeds(): Flow<List<Breeds>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun saveBreedsImages(breedsImage: BreedsImage)
+    @Query("SELECT * FROM breeds WHERE name =:name")
+    fun getSingleBreeds(name: String): Flow<Breeds>
 
-    @Query("SELECT image_urls FROM breeds_images WHERE breeds_name =:breedsName")
-    fun getBreedsImage(breedsName: String): Flow<List<String>>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun saveBreedsImages(breedsImage: BreedsImage)
+
+    @Query("SELECT * FROM breeds_images WHERE breeds_name =:breedsName")
+    fun getBreedsImage(breedsName: String): Flow<BreedsImage>
 
     @Query("UPDATE breeds SET is_favourite = :isFavourite WHERE name =:name")
     suspend fun updateFavoriteBreeds(name: String, isFavourite: Boolean)

@@ -3,19 +3,21 @@ package me.mafu.dogslist_simplesurance.presentation.ui
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import me.mafu.dogslist_simplesurance.data.utils.Resource
 import me.mafu.dogslist_simplesurance.databinding.FragmentBreedPhotoBinding
-import me.mafu.dogslist_simplesurance.presentation.viewmodels.BreedsViewModel
+import me.mafu.dogslist_simplesurance.presentation.adapters.PhotoAdapter
+import me.mafu.dogslist_simplesurance.presentation.viewmodels.BreedsPhotoViewModel
 
 @AndroidEntryPoint
-class BreedPhotoFragment : BaseBreedFragment<FragmentBreedPhotoBinding, BreedsViewModel>() {
+class BreedPhotoFragment : BaseBreedFragment<FragmentBreedPhotoBinding, BreedsPhotoViewModel>() {
 
     override fun inflateView(
         inflater: LayoutInflater,
@@ -25,21 +27,43 @@ class BreedPhotoFragment : BaseBreedFragment<FragmentBreedPhotoBinding, BreedsVi
         return FragmentBreedPhotoBinding.inflate(inflater, container, false)
     }
 
-    override fun getViewModelClass() = BreedsViewModel::class.java
+    override fun getViewModelClass() = BreedsPhotoViewModel::class.java
 
     override fun setUpViews() {
         super.setUpViews()
-        //val vm = ViewModelProvider(this).get(BreedsViewModel::class.java)
 
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.getBreeds().collect{
-                    it.forEach {
-                        Log.d("ssdd_d", "breads name: ${it.name}")
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                viewModel.uiState.collect { uiState ->
+                    when(uiState) {
+                        is Resource.Loading -> binding.fragmentBreedsPhotoProgressBar.visibility =
+                            View.VISIBLE
+                        is Resource.Success -> {
+                            binding.fragmentBreedsPhotoProgressBar.visibility =
+                                View.GONE
+                            binding.breedsPhotoGridView.adapter = uiState.data?.let {
+                                PhotoAdapter(it.imageUrls)
+                            }
+                        }
+                        is Resource.Error -> Log.d("ssdd_d", "Error...")
                     }
                 }
             }
         }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                viewModel.getSingleBreeds().collect {
+                    binding.breedsViewItemTitle.text = it.name
+                    if (it.subBreeds.isEmpty()){
+                        binding.breedsViewItemSubtitle.visibility = View.GONE
+                    } else{
+                        binding.breedsViewItemSubtitle.text = it.subBreeds
+                    }
+                }
+            }
+        }
+
     }
 
 }

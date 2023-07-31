@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.TransitionInflater
 import androidx.viewbinding.ViewBinding
+import me.mafu.dogslist_simplesurance.R
 
 abstract class BaseBreedFragment<VB : ViewBinding, VM : ViewModel> : Fragment() {
 
@@ -23,6 +25,9 @@ abstract class BaseBreedFragment<VB : ViewBinding, VM : ViewModel> : Fragment() 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val inflater = TransitionInflater.from(requireContext())
+        enterTransition = inflater.inflateTransition(R.transition.slide_anim)
+
         init()
     }
 

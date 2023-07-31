@@ -24,14 +24,18 @@ class BreedsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getBreedsImagesList(breedsName: String): Flow<List<String>> {
-        return localDataSource.getBreedsImage(breedsName).map {
-            if (it.isEmpty()) {
+    override suspend fun getSingleBreedsList(name: String): Flow<Breeds> {
+        return localDataSource.getSingleBreeds(name)
+    }
+
+    override suspend fun getBreedsImagesList(breedsName: String): Flow<BreedsImage> {
+        return localDataSource.getBreedsImage(breedsName).map {breedImage ->
+            if (breedImage == null) {
                 remoteDataSource.getBreedsImages(breedsName).data?.let { breedsImage ->
                     localDataSource.saveBreedsImage(BreedsImage(breedsImage, breedsName))
                 }
             }
-            it
+            breedImage
         }
     }
 

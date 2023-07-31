@@ -14,6 +14,11 @@
         <action
             android:id="@+id/action_BreedsFragment_to_FavoriteBreedsFragment"
             app:destination="@id/FavoriteBreedsFragment" />
+
+
+        <action
+            android:id="@+id/action_BreedsFragment_to_BreedPhotoFragment"
+            app:destination="@id/BreedPhotoFragment" />
     </fragment>
     <fragment
         android:id="@+id/FavoriteBreedsFragment"
@@ -32,6 +37,10 @@
         android:name="me.mafu.dogslist_simplesurance.presentation.ui.BreedPhotoFragment"
         android:label="@string/breeds_photo_fragment_label"
         tools:layout="@layout/fragment_favorite_breeds">
+
+        <argument
+            android:name="breeds_name"
+            app:argType="string" />
 
         <action
             android:id="@+id/action_BreedPhotoFragment_to_BreedsFragment"

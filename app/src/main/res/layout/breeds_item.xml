@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="breeds"
+            type="me.mafu.dogslist_simplesurance.domain.models.Breeds" />
+
+        <variable
+            name="clickListener"
+            type="me.mafu.dogslist_simplesurance.presentation.adapters.BreedsAdapter.BreedsItemClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/background"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/fragment_profile_menu_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_s"
+            android:layout_marginEnd="@dimen/spacing_s"
+            android:layout_marginBottom="@dimen/spacing_s"
+            app:contentPaddingTop="@dimen/spacing_m"
+            android:onClick="@{() -> clickListener.onBreedsClickListener(breeds)}"
+            app:contentPaddingBottom="@dimen/spacing_m"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="12dp"
+            app:contentPadding="10dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/item_profile_menu_title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/breeds_view_item_number"
+                    android:layout_width="40dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/circular_textview"
+                    android:gravity="center"
+                    android:text="199"
+                    android:textColor="@color/reply_blue_800"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/breeds_view_item_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginLeft="@dimen/spacing_m"
+                    android:text="@{breeds.name}"
+                    tools:text="TextView"
+                    android:textColor="@color/reply_blue_800"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/breeds_view_item_subtitle"
+                    app:layout_constraintStart_toEndOf="@+id/breeds_view_item_number"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/breeds_view_item_subtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:textSize="14sp"
+                    android:drawableLeft="@drawable/ic_baseline_subdirectory_arrow_right_24"
+                    android:layout_marginLeft="@dimen/spacing_m"
+                    android:textColor="@color/reply_blue_600"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/breeds_view_item_title"
+                    app:layout_constraintTop_toBottomOf="@+id/breeds_view_item_title" />
+
+                <ImageView
+                    android:id="@+id/breeds_view_item_favorite_button"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:padding="8dp"
+                    android:layout_marginEnd="@dimen/spacing_l"
+                    app:layout_constraintBottom_toBottomOf="@+id/item_profile_menu_title_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/item_profile_menu_title_layout"
+                    android:onClick="@{() -> clickListener.onFavoriteClickListener(breeds)}"
+                    android:src="@{breeds.favourite ? @drawable/ic_baseline_favorite_24 : @drawable/ic_baseline_favorite_border_24}" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</layout>

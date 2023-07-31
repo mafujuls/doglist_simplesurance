@@ -15,7 +15,11 @@ class LocalDataSourceImpl @Inject constructor(private val dao: BreedsDao) : Loca
         return dao.getAllBreeds()
     }
 
-    override suspend fun getBreedsImage(breedsName: String): Flow<List<String>> {
+    override fun getSingleBreeds(name: String): Flow<Breeds> {
+        return dao.getSingleBreeds(name)
+    }
+
+    override suspend fun getBreedsImage(breedsName: String): Flow<BreedsImage> {
         return dao.getBreedsImage(breedsName)
     }
 
