@@ -23,7 +23,9 @@ This is an Android application developed using Kotlin programming language, whic
 
 Breeds List  |  Favourite Breeds  |  Breeds Details
 :-----------:|:------------------:|:--------------:
-![screenshot4simplesurance1](https://github.com/mafujuls/doglist_simplesurance/assets/22118355/381226fd-0b1b-418d-85e6-3aa0ce8f309c) | ![screenshot4simplesurance2](https://github.com/mafujuls/doglist_simplesurance/assets/22118355/d719208f-47c1-49e3-8f00-15299817633c) | ![screenshot4simplesurance3](https://github.com/mafujuls/doglist_simplesurance/assets/22118355/8182c2ca-560d-4289-84be-563f79d80bf2)
+![screenshot4simplesurance1](https://github.com/mafujuls/doglist_simplesurance/assets/22118355/ebd4a646-0a60-4f33-908c-89bb01129732) | ![screenshot4simplesurance2](https://github.com/mafujuls/doglist_simplesurance/assets/22118355/17dc2d86-2953-4c89-8dba-2df59d347c1b) | ![screenshot4simplesurance3](https://github.com/mafujuls/doglist_simplesurance/assets/22118355/286cb2f2-8375-4797-8c0b-9b59b865406e)
+
+
 
 
 ## Project Structure
