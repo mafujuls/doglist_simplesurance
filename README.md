@@ -10,7 +10,7 @@ This is an Android application developed using Kotlin programming language, whic
 
 - Display a list of dog breeds in the list ordered alphabetically by breed name (A-Z)
 - The user can mark their favorite breeds by clicking on the heart button on the list and see only those breeds in another list
-- The user can see the detailed information about a selected breed, including an image if user click on an item (user will be redirected to the details screen).
+- The user can see the detailed information about a selected breed, including images if user click on an item (user will be redirected to the details screen).
 
 
 ### Some Other Features
@@ -21,7 +21,10 @@ This is an Android application developed using Kotlin programming language, whic
 
 ## Screenshots
 
-_Insert relevant screenshots of the app here, showcasing its features._
+Breeds List  |  Favourite Breeds  |  Breeds Details
+:-----------:|:------------------:|:--------------:
+![screenshot4simplesurance1](https://github.com/mafujuls/doglist_simplesurance/assets/22118355/381226fd-0b1b-418d-85e6-3aa0ce8f309c) | ![screenshot4simplesurance2](https://github.com/mafujuls/doglist_simplesurance/assets/22118355/d719208f-47c1-49e3-8f00-15299817633c) | ![screenshot4simplesurance3](https://github.com/mafujuls/doglist_simplesurance/assets/22118355/8182c2ca-560d-4289-84be-563f79d80bf2)
+
 
 ## Project Structure
 
@@ -49,10 +52,10 @@ The project adheres to a structured organization to keep the codebase clean and 
 - **Presentation Layer:** This layer is responsible for handling the UI components and user interactions. It contains Activities, Fragments, ViewModels and Adapters. ViewModel is used to retain and manage UI-related data across configuration changes. The layer is built using Android's Jetpack components, such as ViewModel and Navigation, to ensure a robust and consistent user experience.
 
 
-- **Domain Layer:** The domain module represents the core business logic of the application. It contains entities (model) and use cases that are used by the presentation layer to communicate with the data layer and this layer also contains interfaces for the repositories. This layer is independent of the Android framework and can be easily tested in isolation.
+- **Domain Layer:** The domain layer represents the core business logic of the application. It contains entities (model) and use cases that are used by the presentation layer to communicate with the data layer and this layer also contains interfaces for the repositories. This layer is independent of the Android framework and can be easily tested in isolation.
 
 
-- **Data Layer:** The data module handles data retrieval and manipulation. It includes implementations of the interfaces defined in the domain layer, as well as data sources like Room (local database) and Retrofit (remote API). The data layer is responsible for data caching, fetching data from remote sources, and providing the required data to the domain layer.
+- **Data Layer:** The data layer handles data retrieval and manipulation. It includes implementations of the interfaces defined in the domain layer, as well as data sources like Room (local database) and Retrofit (remote API). The data layer is responsible for data caching, fetching data from remote sources, and providing the required data to the domain layer.
 
 
 - **di**: Contains the Hilt components for dependency injection.
@@ -68,7 +71,7 @@ The project utilizes several popular libraries to enhance its functionality:
 - **Kotlin Coroutine:** Provides a lightweight and efficient way to perform asynchronous operations in Kotlin.
 
 
-- **Retrofit:** A type-safe HTTP client for Android, Retrofit simplifies network communication with APIs.
+- **Retrofit:** A HTTP client for Android, Retrofit simplifies network communication with APIs.
 
 
 - **okhttp3:logging-interceptor:** A library for logging HTTP request and response.
@@ -101,10 +104,11 @@ The project utilizes several popular libraries to enhance its functionality:
 
 1. Clone the repository to your local machine using the following command:
 
-   https://github.com/mafujuls/doglist_simplesurance.git
+   ```git clone https://github.com/mafujuls/doglist_simplesurance.git```
 
 
 2. Open the project in Android Studio.
+
 
 3. Build and run the application on an Android emulator or physical device.
 
